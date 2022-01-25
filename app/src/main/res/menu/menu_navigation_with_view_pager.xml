@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/i_home"
+        android:checked="true"
+        android:icon="@drawable/ic_audiotrack_black_24dp"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/i_topic"
+        android:icon="@drawable/ic_reply"
+        android:title="板块" />
+    <item
+        android:id="@+id/i_mine"
+        android:icon="@drawable/ic_visibility_black_24dp"
+        android:title="@string/mine" />
+</menu>
