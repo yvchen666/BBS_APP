@@ -3,4 +3,6 @@
     <string name="topic">话题</string>
     <string name="mine">我的</string>
     <string name="home">主页</string>
+    <string name="toolbar_title">HOME</string>
+    <string name="sub_title">Toolbar SubTitle</string>
 </resources>

@@ -24,7 +24,6 @@ public class FrameMine  extends Fragment {
     @NonNull
     @Override
     public LayoutInflater onGetLayoutInflater(@Nullable Bundle savedInstanceState) {
-        textView = getActivity().findViewById(R.id.textView3);
         return super.onGetLayoutInflater(savedInstanceState);
     }
 }

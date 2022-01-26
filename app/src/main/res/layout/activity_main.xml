@@ -4,10 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:toolbar="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
 
     tools:context=".MainActivity">
-
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool_bar_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        toolbar:navigationIcon="@drawable/ic_book_list"
+        toolbar:title=""
+        toolbar:titleTextColor="@color/white"
+        toolbar:theme="@style/ToolbarTheme"
+        toolbar:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
     <LinearLayout
         android:id="@+id/main_fragment"
         android:layout_width="match_parent"

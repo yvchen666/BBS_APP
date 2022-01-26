@@ -9,6 +9,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -20,6 +21,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 
 public class MainActivity extends AppCompatActivity {
+    private Toolbar toolbar;
     private FrameHome frameHome;
     private FrameTopic frameTopic;
     private FrameMine frameMine;
@@ -45,6 +47,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        toolbar = findViewById(R.id.tool_bar_2);
+        toolbar.setNavigationIcon(R.drawable.ic_book_list);
+        // 设置navigation button 点击事件
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        // 设置 toolbar 背景色
+        toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        // 设置 Title
+        toolbar.setTitle(R.string.toolbar_title);
+        //  设置Toolbar title文字颜色
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        //设置 Toolbar menu
+        toolbar.inflateMenu(R.menu.setting_menu);
+        // 设置溢出菜单的图标
+        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.abc_ic_menu_moreoverflow_mtrl_alpha));
+        // 设置menu item 点击事件
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.item_setting:
+                        //点击设置
+                        break;
+                }
+                return false;
+            }
+        });
         setHalfTransparent();
         frameHome = new FrameHome();
         frameTopic = new FrameTopic();
