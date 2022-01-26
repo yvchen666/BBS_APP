@@ -3,6 +3,7 @@ package com.icekey.bbs;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -19,8 +20,11 @@ import com.icekey.bbs.fragment.FrameMine;
 import com.icekey.bbs.fragment.FrameTopic;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import es.dmoral.toasty.Toasty;
+
 
 public class MainActivity extends AppCompatActivity {
+    long first_time = 0;
     private Toolbar toolbar;
     private FrameHome frameHome;
     private FrameTopic frameTopic;
@@ -146,4 +150,19 @@ public class MainActivity extends AppCompatActivity {
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             }
         }
+    @Override
+    public boolean onKeyUp(int keycode, KeyEvent event) {
+        if (keycode == KeyEvent.KEYCODE_BACK) {
+            long second_time = System.currentTimeMillis();
+
+            if (second_time - first_time > 2000) {
+                Toasty.warning(MainActivity.this, "再按一次退出程序").show();
+                first_time = second_time;
+                return true;
+            } else {
+                System.exit(0);
+            }
+        }
+        return super.onKeyUp(keycode, event);
+    }
     }

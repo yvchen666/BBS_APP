@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.icekey.bbs.R;
 import com.icekey.bbs.bean.RecyclerData;
+import com.icekey.bbs.utils.CircleImageView;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
