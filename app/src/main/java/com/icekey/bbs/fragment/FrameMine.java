@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.icekey.bbs.R;
 
 public class FrameMine  extends Fragment {
-    private TextView textView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

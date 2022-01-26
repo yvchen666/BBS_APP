@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         // 设置 toolbar 背景色
         toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         // 设置 Title
-        toolbar.setTitle(R.string.toolbar_title);
+        toolbar.setTitle("主页");
         //  设置Toolbar title文字颜色
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         //设置 Toolbar menu
@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("item.getItemId()", " " + lastfragment);
                     if (lastfragment != 0) {
                         switchFragment(lastfragment, 0);
+                        toolbar.setTitle("主页");
                         lastfragment = 0;
                     }
                     return true;
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("item.getItemId()", " " + lastfragment);
                     if (lastfragment != 1) {
                         switchFragment(lastfragment, 1);
+                        toolbar.setTitle("板块");
                         lastfragment = 1;
                     }
                     return true;
@@ -113,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("item.getItemId()", " " + lastfragment);
                     if (lastfragment != 2) {
                         switchFragment(lastfragment, 2);
+                        toolbar.setTitle("我的");
                         lastfragment = 2;
                     }
                     return true;
