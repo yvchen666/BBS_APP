@@ -1,6 +1,7 @@
 ### 项目引用：
     Toast：com.github.GrenderG:Toasty:1.5.2
     BottomNavigationView：com.github.ittianyu:BottomNavigationViewEx:2.0.4
+    Banner：io.github.youth5201314:banner:2.2.2
 
 
 
@@ -10,8 +11,8 @@
     recyclerview加载不同样式
     我的界面
 ### Todo
-    侧滑菜单栏
     话题界面
+    对接服务器
 
 
 ### 经验：

@@ -1,5 +1,6 @@
 package com.icekey.bbs;
 
+import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,14 +8,21 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.icekey.bbs.fragment.FrameHome;
 import com.icekey.bbs.fragment.FrameMine;
 import com.icekey.bbs.fragment.FrameTopic;
@@ -25,6 +33,8 @@ import es.dmoral.toasty.Toasty;
 
 public class MainActivity extends AppCompatActivity {
     long first_time = 0;
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private FrameHome frameHome;
     private FrameTopic frameTopic;
@@ -51,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        navigationView = findViewById(R.id.navigation_view);
+        drawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.tool_bar_2);
         toolbar.setNavigationIcon(R.drawable.ic_book_list);
         // 设置navigation button 点击事件
@@ -91,6 +103,59 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationViewEx = findViewById(R.id.bnve);
         bottomNavigationViewEx.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         fragment = findViewById(R.id.main_fragment);
+
+
+//        setSupportActionBar(toolbar);//将toolbar与ActionBar关联
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, 0, 0);
+        drawerLayout.setDrawerListener(toggle);//初始化状态
+        toggle.syncState();
+
+
+        /*---------------------------添加头布局和尾布局-----------------------------*/
+        //获取xml头布局view
+        View headerView = navigationView.getHeaderView(0);
+        //添加头布局的另外一种方式
+        //View headview=navigationview.inflateHeaderView(R.layout.navigationview_header);
+
+        //寻找头部里面的控件
+        ImageView imageView = headerView.findViewById(R.id.iv_head);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "点击了头像", Toast.LENGTH_LONG).show();
+            }
+        });
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                return false;
+            }
+        });
+        ColorStateList csl = (ColorStateList) getResources().getColorStateList(R.color.cardview_dark_background);
+        //设置item的条目颜色
+        navigationView.setItemTextColor(csl);
+        //去掉默认颜色显示原来颜色  设置为null显示本来图片的颜色
+        navigationView.setItemIconTintList(csl);
+
+        //设置单个消息数量
+        LinearLayout llAndroid = (LinearLayout) navigationView.getMenu().findItem(R.id.single_1).getActionView();
+        TextView msg= (TextView) llAndroid.findViewById(R.id.msg_bg);
+        msg.setText("99+");
+
+        //设置条目点击监听
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                //安卓
+                Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_LONG).show();
+                //设置哪个按钮被选中
+//                menuItem.setChecked(true);
+                //关闭侧边栏
+//                drawer.closeDrawers();
+                return false;
+            }
+        });
 
     }
 

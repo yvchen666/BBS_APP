@@ -79,11 +79,4 @@ public class FrameHome extends Fragment {
         banner = getActivity().findViewById(R.id.frame_home_banner);
         recyclerView = getActivity().findViewById(R.id.fame_home_recyclerView);
     }
-
-//    @NonNull
-//    @Override
-//    public LayoutInflater onGetLayoutInflater(@Nullable Bundle savedInstanceState) {
-//
-//        return super.onGetLayoutInflater(savedInstanceState);
-//    }
 }
