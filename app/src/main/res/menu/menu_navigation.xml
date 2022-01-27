@@ -7,8 +7,7 @@
         <item
             android:id="@+id/single_1"
             android:icon="@drawable/ic_android_fill"
-            android:title="安卓"
-            app:actionLayout="@layout/bage_hint"/>
+            android:title="安卓" />
 
         <item
             android:id="@+id/single_2"

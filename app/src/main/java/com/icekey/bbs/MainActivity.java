@@ -138,11 +138,6 @@ public class MainActivity extends AppCompatActivity {
         //去掉默认颜色显示原来颜色  设置为null显示本来图片的颜色
         navigationView.setItemIconTintList(csl);
 
-        //设置单个消息数量
-        LinearLayout llAndroid = (LinearLayout) navigationView.getMenu().findItem(R.id.single_1).getActionView();
-        TextView msg= (TextView) llAndroid.findViewById(R.id.msg_bg);
-        msg.setText("99+");
-
         //设置条目点击监听
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
