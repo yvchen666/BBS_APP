@@ -17,12 +17,20 @@ import com.icekey.bbs.adapter.ImageAdapter;
 import com.icekey.bbs.adapter.RecyclerViewAdapter;
 import com.icekey.bbs.bean.DataBean;
 import com.icekey.bbs.bean.RecyclerData;
+import com.icekey.bbs.network.UserApi;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.util.LogUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
+
+import okhttp3.Request;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class FrameHome extends Fragment {
     private Banner banner;
@@ -54,6 +62,19 @@ public class FrameHome extends Fragment {
     }
 
     private void initData() {
+//        Retrofit retrofit = new Retrofit.Builder().baseUrl("").build();
+//        Call<ResponseBody> call = retrofit.create(UserApi.class).getUser("");
+//        call.enqueue(new Callback<ResponseBody>() {
+//            @Override
+//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//
+//            }
+//        });
         datas = new ArrayList<>();
         RecyclerData.Builder builder = new RecyclerData.Builder();
         for (int i = 0; i < 20; i++) {

@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         hideTitle();
         initView();
-
     }
 
     private void hideTitle() {
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.item_setting:
                         //点击设置
                         break;
@@ -190,26 +189,27 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-        private void switchFragment(int lastfragment, int index) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            //隐藏上个Fragment
-            transaction.hide(fragments[lastfragment]);
-            if (!fragments[index].isAdded()) {
-                transaction.add(R.id.main_fragment, fragments[index]);
-            }
-            transaction.show(fragments[index]).commitAllowingStateLoss();
+    private void switchFragment(int lastfragment, int index) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        //隐藏上个Fragment
+        transaction.hide(fragments[lastfragment]);
+        if (!fragments[index].isAdded()) {
+            transaction.add(R.id.main_fragment, fragments[index]);
         }
+        transaction.show(fragments[index]).commitAllowingStateLoss();
+    }
 
-        protected void setHalfTransparent() {
-            if (Build.VERSION.SDK_INT >= 21) {//21表示5.0
-                View decorView = getWindow().getDecorView();
-                int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-                decorView.setSystemUiVisibility(option);
-                getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            } else if (Build.VERSION.SDK_INT >= 19) {//19表示4.4
-                getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            }
+    protected void setHalfTransparent() {
+        if (Build.VERSION.SDK_INT >= 21) {//21表示5.0
+            View decorView = getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        } else if (Build.VERSION.SDK_INT >= 19) {//19表示4.4
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
+    }
+
     @Override
     public boolean onKeyUp(int keycode, KeyEvent event) {
         if (keycode == KeyEvent.KEYCODE_BACK) {
@@ -225,4 +225,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyUp(keycode, event);
     }
-    }
+}

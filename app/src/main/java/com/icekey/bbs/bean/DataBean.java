@@ -37,11 +37,11 @@ public class DataBean {
 
     public static List<DataBean> getTestData2() {
         List<DataBean> list = new ArrayList<>();
-        list.add(new DataBean(R.drawable.image1, "听风.赏雨", 3));
-        list.add(new DataBean(R.drawable.image1, "迪丽热巴.迪力木拉提", 1));
-        list.add(new DataBean(R.drawable.image1, "爱美.人间有之", 3));
-        list.add(new DataBean(R.drawable.image1, "洋洋洋.气质篇", 1));
-        list.add(new DataBean(R.drawable.image1, "生活的态度", 3));
+        list.add(new DataBean(R.mipmap.banner, "听风.赏雨", 3));
+        list.add(new DataBean(R.mipmap.banner, "迪丽热巴.迪力木拉提", 1));
+        list.add(new DataBean(R.mipmap.banner, "爱美.人间有之", 3));
+        list.add(new DataBean(R.mipmap.banner, "洋洋洋.气质篇", 1));
+        list.add(new DataBean(R.mipmap.banner, "生活的态度", 3));
         return list;
     }
 

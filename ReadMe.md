@@ -13,7 +13,10 @@
 ### Todo
     话题界面
     对接服务器
+    登录注册界面
+    多样式item的recyclerView
 
 
 ### 经验：
     使用约束布局时 宽高设为0dp 然后进行调整 解决recyclerView显示不全的问题
+    大图片放入mipmap 加载起来内存优化比draw able好很多
