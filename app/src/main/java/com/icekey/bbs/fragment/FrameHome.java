@@ -1,6 +1,7 @@
 package com.icekey.bbs.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,6 @@ import com.youth.banner.util.LogUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import okhttp3.Request;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -62,23 +62,29 @@ public class FrameHome extends Fragment {
     }
 
     private void initData() {
-//        Retrofit retrofit = new Retrofit.Builder().baseUrl("").build();
-//        Call<ResponseBody> call = retrofit.create(UserApi.class).getUser("");
-//        call.enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
-//
-//            }
-//        });
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(UserApi.BaseUrl).build();
+        Call<ResponseBody> call = retrofit.create(UserApi.class).getPost();
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                try {
+                    Log.d("TAG", "onResponse: " + response.body().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d("TAG", "onResponse Error: " + t.getMessage());
+            }
+        });
         datas = new ArrayList<>();
         RecyclerData.Builder builder = new RecyclerData.Builder();
         for (int i = 0; i < 20; i++) {
-            RecyclerData module = builder.setUserName("用户"+i).setTitle("标题"+i).setContent("test").crate();
+            RecyclerData module = builder.setUserName("用户" + i).setTitle("标题" + i).setContent("test").crate();
 
             datas.add(module);
         }

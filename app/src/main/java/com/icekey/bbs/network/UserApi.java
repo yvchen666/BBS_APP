@@ -6,7 +6,7 @@ import retrofit2.http.Field;
 import retrofit2.http.GET;
 
 public interface UserApi {
-
-    @GET("/getUser")
-    Call<ResponseBody> getUser(@Field("userName") String userName);
+    public String BaseUrl = "http://139.155.90.20:8080/";
+    @GET("/bbs/getPost")
+    Call<ResponseBody> getPost();
 }
