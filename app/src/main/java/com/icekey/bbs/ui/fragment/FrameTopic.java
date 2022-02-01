@@ -1,4 +1,4 @@
-package com.icekey.bbs.fragment;
+package com.icekey.bbs.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

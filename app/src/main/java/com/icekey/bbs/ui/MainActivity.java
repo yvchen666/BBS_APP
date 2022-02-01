@@ -1,5 +1,6 @@
-package com.icekey.bbs;
+package com.icekey.bbs.ui;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,8 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,9 +22,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.icekey.bbs.fragment.FrameHome;
-import com.icekey.bbs.fragment.FrameMine;
-import com.icekey.bbs.fragment.FrameTopic;
+import com.icekey.bbs.R;
+import com.icekey.bbs.ui.fragment.FrameHome;
+import com.icekey.bbs.ui.fragment.FrameMine;
+import com.icekey.bbs.ui.fragment.FrameTopic;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import es.dmoral.toasty.Toasty;
@@ -122,7 +122,9 @@ public class MainActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "点击了头像", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
             }
         });
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
