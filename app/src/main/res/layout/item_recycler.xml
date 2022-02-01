@@ -84,9 +84,8 @@
                 android:id="@+id/item_recycler_gridView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:horizontalSpacing="5dp"
-                android:numColumns="3"
                 android:verticalSpacing="5dp" />
         </LinearLayout>
 

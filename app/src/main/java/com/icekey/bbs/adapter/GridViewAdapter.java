@@ -65,9 +65,7 @@ public class GridViewAdapter extends BaseAdapter {
         //加载第三方网络图片
         for (String img_url : arrays) {
             Log.d("img_url", "getView: "+img_url);
-
             Glide.with(context).load(img_url).override(WindowManager.LayoutParams.WRAP_CONTENT).into(holder.imageView);
-
         }
         return convertView;
 

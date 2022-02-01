@@ -1,5 +1,6 @@
 package com.icekey.bbs.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,10 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.icekey.bbs.R;
 import com.icekey.bbs.adapter.ImageAdapter;
 import com.icekey.bbs.adapter.RecyclerViewAdapter;
 import com.icekey.bbs.bean.DataBean;
+import com.icekey.bbs.bean.PostDataBean;
 import com.icekey.bbs.bean.RecyclerData;
 import com.icekey.bbs.network.UserApi;
 import com.youth.banner.Banner;
@@ -25,7 +29,10 @@ import com.youth.banner.util.LogUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
+import es.dmoral.toasty.Toasty;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,7 +42,7 @@ import retrofit2.Retrofit;
 public class FrameHome extends Fragment {
     private Banner banner;
     private RecyclerView recyclerView;
-    private ArrayList<RecyclerData> datas;
+    private ArrayList<RecyclerData> datas = new ArrayList<>();
     private RecyclerViewAdapter recyclerViewAdapter;
 
     @Nullable
@@ -67,27 +74,36 @@ public class FrameHome extends Fragment {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-
                 try {
-                    Log.d("TAG", "onResponse: " + response.body().string());
+                    String json =  response.body().string();
+                    List<PostDataBean> postDataBeanList = new Gson().fromJson(json,new TypeToken<List<PostDataBean>>(){}.getType());
+                    RecyclerData.Builder builder = new RecyclerData.Builder();
+                    for (PostDataBean postDataBean :postDataBeanList) {
+                        RecyclerData module = builder
+                                .setUserName(postDataBean.getPostUser())
+                                .setTitle(postDataBean.getPostHeader())
+                                .setContent(postDataBean.getPostContent())
+                                .setImg_json(postDataBean.getPostPic())
+                                .setDate(postDataBean.getPostTime())
+                                .crate();
+                        datas.add(module);
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
-
+            @SuppressLint("CheckResult")
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.d("TAG", "onResponse Error: " + t.getMessage());
+                Toasty.warning(requireActivity(), Objects.requireNonNull(t.getMessage()));
             }
         });
-        datas = new ArrayList<>();
-        RecyclerData.Builder builder = new RecyclerData.Builder();
-        for (int i = 0; i < 20; i++) {
-            RecyclerData module = builder.setUserName("用户" + i).setTitle("标题" + i).setContent("test").crate();
-
-            datas.add(module);
-        }
+//        datas = new ArrayList<>();
+//        RecyclerData.Builder builder = new RecyclerData.Builder();
+//        for (int i = 0; i < 20; i++) {
+//            RecyclerData module = builder.setUserName("用户" + i).setTitle("标题" + i).setContent("test").crate();
+//            datas.add(module);
+//        }
     }
 
     private void initBanner() {

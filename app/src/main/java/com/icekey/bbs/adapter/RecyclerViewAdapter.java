@@ -2,24 +2,31 @@ package com.icekey.bbs.adapter;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.icekey.bbs.R;
 import com.icekey.bbs.bean.RecyclerData;
 import com.icekey.bbs.utils.CircleImageView;
 
+import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
@@ -49,6 +56,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.postDate.setText(df3.format(new Date()));
         holder.title.setText(recyclerData.getTitle());
         holder.content.setText(recyclerData.getContent());
+        String[] arrays = new Gson().fromJson(datas.get(position).getImg_json(),String[].class);
+        holder.gridView.setNumColumns(arrays.length);
         holder.gridView.setAdapter(new  GridViewAdapter(context, recyclerData.getImg_json(),holder.gridView));
     }
 
