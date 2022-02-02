@@ -168,14 +168,14 @@ public class MainActivity extends AppCompatActivity {
                         lastfragment = 0;
                     }
                     return true;
-                case R.id.i_topic:
-                    Log.d("item.getItemId()", " " + lastfragment);
-                    if (lastfragment != 1) {
-                        switchFragment(lastfragment, 1);
-                        toolbar.setTitle("板块");
-                        lastfragment = 1;
-                    }
-                    return true;
+//                case R.id.i_topic:
+//                    Log.d("item.getItemId()", " " + lastfragment);
+//                    if (lastfragment != 1) {
+//                        switchFragment(lastfragment, 1);
+//                        toolbar.setTitle("板块");
+//                        lastfragment = 1;
+//                    }
+//                    return true;
                 case R.id.i_mine:
                     Log.d("item.getItemId()", " " + lastfragment);
                     if (lastfragment != 2) {
