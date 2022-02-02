@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.icekey.bbs.R;
 import com.icekey.bbs.bean.RecyclerData;
@@ -33,6 +34,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private final Context context;
     private ArrayList<RecyclerData> datas;
+    private static final int PIC_NONE = 0;
+    private static final int PIC_ONE = 1;
+    private static final int PIC_TWO = 2;
+    private static final int PIC_THREE = 3;
+
 
     public RecyclerViewAdapter(Context context, ArrayList<RecyclerData> datas) {
         this.context = context;
@@ -42,6 +48,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         View itemView = View.inflate(context, R.layout.item_recycler, null);
         return new ViewHolder(itemView);
     }
@@ -69,6 +76,27 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public int getItemCount() {
         return datas.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        String[] arrays = new String[0];
+        try {
+            arrays = new Gson().fromJson(datas.get(position).getImg_json(),String[].class);
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+        }
+        if (arrays.length == 0){
+            return PIC_NONE;
+        }else if (arrays.length ==1){
+            return PIC_ONE;
+        }else if(arrays.length == 2){
+            return PIC_TWO;
+        }else if (arrays.length >= 3){
+            return PIC_THREE;
+        }else{
+            return super.getItemViewType(position);
+        }
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

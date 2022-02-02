@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -12,14 +13,17 @@ import com.google.gson.Gson;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
-    String img_json = "['http://139.155.90.20:8888/down/kCqpkDuIm6Pq','http://139.155.90.20:8888/down/kCqpkDuIm6Pq','http://139.155.90.20:8888/down/kCqpkDuIm6Pq']";
+    String img_json = "[]";
 
     @Test
     public void addition_isCorrect() {
         Gson gson = new Gson();
-        String[] arrays = gson.fromJson(img_json,String[].class);
-        for (String a :arrays){
-            System.out.println(a);
+        String[] arrays = new String[0];
+        try {
+            arrays = gson.fromJson(img_json,String[].class);
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
         }
+        System.out.println(arrays.length);
     }
 }
