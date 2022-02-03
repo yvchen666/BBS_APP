@@ -1,5 +1,6 @@
 package com.icekey.bbs.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
@@ -48,7 +49,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if(viewType == PIC_NONE){
 
+        }else if(viewType == PIC_NONE){
+
+        }else if(viewType == PIC_TWO){
+
+        }else if(viewType == PIC_THREE){
+
+        }else{
+
+        }
         View itemView = View.inflate(context, R.layout.item_recycler, null);
         return new ViewHolder(itemView);
     }
@@ -56,6 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         RecyclerData recyclerData = datas.get(position);
         Glide.with(context).load(recyclerData.getIco_url()).into(holder.userIcon);
         holder.userName.setText(recyclerData.getUserName());
@@ -106,7 +118,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private TextView title;
         private TextView content;
         private GridView gridView;
-
+        private Dialog dialog;
+        private ImageView image;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             userIcon = itemView.findViewById(R.id.item_recycler_userIcon);
@@ -118,6 +131,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         }
     }
+
+    /**
+     * 设置recycler分割线
+     */
     public static class SpacesItemDecoration extends RecyclerView.ItemDecoration {
         private int space;
 
