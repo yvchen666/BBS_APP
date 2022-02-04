@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/drawable/button_round_shap.xml" value="0.2037037037037037" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/drawable/card_foreground.xml" value="0.2375" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/drawable/cardview_shap_bg.xml" value="0.2375" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/drawable/ic_add.xml" value="0.23384615384615384" />
@@ -22,7 +23,10 @@
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/item.xml" value="0.264" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/item_grid.xml" value="0.22135416666666666" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/item_none_pic.xml" value="0.18931159420289856" />
+        <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/item_one_pic.xml" value="0.18342391304347827" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/item_recycler.xml" value="0.2" />
+        <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/item_three_pic.xml" value="0.18342391304347827" />
+        <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/item_two_pic.xml" value="0.18342391304347827" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/navigationview_header.xml" value="0.22135416666666666" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/menu/menu_navigation.xml" value="0.22135416666666666" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/menu/menu_navigation_with_view_pager.xml" value="0.152" />

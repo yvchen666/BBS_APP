@@ -5,9 +5,11 @@
         <attr name="civ_border_color" format="color" />
         <attr name="civ_border_overlay" format="boolean" />
     </declare-styleable>
-    <style name="ToolbarTheme">parent="Theme.AppCompat.Light"</style>
+    <style name="ToolbarTheme"></style>
     <style name="FullActivity" >
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+    <?xml version="1.0" encoding="UTF-8"?>
+
 </resources>

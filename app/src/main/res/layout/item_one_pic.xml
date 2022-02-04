@@ -28,7 +28,7 @@
                 android:layout_marginEnd="16dp">
 
                 <ImageView
-                    android:id="@+id/item_none_userIcon"
+                    android:id="@+id/item_recycler_userIcon"
                     android:layout_width="35dp"
                     android:layout_height="35dp" />
 
@@ -38,7 +38,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/item_none_userName"
+                        android:id="@+id/item_recycler_userName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
@@ -46,7 +46,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/item_none_postDate"
+                        android:id="@+id/item_recycler_postDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
@@ -63,7 +63,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/item_none_title"
+                    android:id="@+id/item_recycler_Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -74,12 +74,15 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/item_none_content"
+                    android:id="@+id/item_recycler_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:lines="6"
+                    android:lines="3"
                     android:text="内容"
                     android:textColor="#514D4D" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -92,7 +95,6 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/item_none_linear_share"
                 android:orientation="horizontal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -102,15 +104,13 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_read" />
+                    android:src="@drawable/ic_share" />
 
                 <TextView
-                    android:id="@+id/item_none_text_read"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/item_none_linear_commit"
                 android:orientation="horizontal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -123,12 +123,10 @@
                     android:src="@drawable/ic_message" />
 
                 <TextView
-                    android:id="@+id/item_none_text_commit"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/item_none_linear_favorite"
                 android:orientation="horizontal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -141,8 +139,7 @@
                     android:src="@drawable/ic_zan" />
 
                 <TextView
-                    android:id="@+id/item_none_text_favorite"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
             </LinearLayout>
         </LinearLayout>
