@@ -41,7 +41,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             return new NonePicViewHolder(itemView);
         } else if (viewType == PIC_ONE) {
             itemView = View.inflate(context, R.layout.item_one_pic, null);
-            return null;
+            return new OnePicViewHolder(itemView);
         } else if (viewType == PIC_TWO) {
             itemView = View.inflate(context, R.layout.item_two_pic, null);
             return null;
@@ -143,6 +143,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             text_read = itemView.findViewById(R.id.item_none_text_read);
             text_commit = itemView.findViewById(R.id.item_none_text_commit);
             text_favorite = itemView.findViewById(R.id.item_none_text_favorite);
+        }
+    }
+    static class OnePicViewHolder extends RecyclerView.ViewHolder {
+        private ImageView userIcon;
+        private TextView userName;
+        private TextView postDate;
+        private TextView title;
+        private TextView content;
+        private ImageView imageView;
+        private TextView text_read;
+        private TextView text_commit;
+        private TextView text_favorite;
+
+        public OnePicViewHolder(@NonNull View itemView) {
+            super(itemView);
+            userIcon = itemView.findViewById(R.id.item_one_userIcon);
+            userName = itemView.findViewById(R.id.item_one_userName);
+            postDate = itemView.findViewById(R.id.item_one_postDate);
+            title = itemView.findViewById(R.id.item_one_title);
+            content = itemView.findViewById(R.id.item_one_content);
+            imageView = itemView.findViewById(R.id.item_one_pic);
+            text_read = itemView.findViewById(R.id.item_one_text_read);
+            text_commit = itemView.findViewById(R.id.item_one_text_commit);
+            text_favorite = itemView.findViewById(R.id.item_one_text_favorite);
         }
     }
 
