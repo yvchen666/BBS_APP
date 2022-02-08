@@ -22,3 +22,17 @@
 ### 经验：
     使用约束布局时 宽高设为0dp 然后进行调整 解决recyclerView显示不全的问题
     大图片放入mipmap 加载起来内存优化比draw able好很多
+
+    RecyclerView，item中的xml布局是match_parent，但是宽度没能铺满整个界面解决办法：
+        ```java
+            @NonNull
+            @Override
+            public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            //        View itemView = View.inflate(context,R.layout.item_recycle,null);
+            //        return new ViewHolder(itemView);
+                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_group_list, parent, false);//解决宽度不能铺满
+                    ViewHolder holder = new ViewHolder(view);
+                    return holder;
+            }
+        ```
+

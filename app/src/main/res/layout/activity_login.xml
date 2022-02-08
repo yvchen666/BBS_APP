@@ -16,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         toolbar:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        toolbar:theme="@style/ToolbarTheme"
         toolbar:title="登录"
         toolbar:titleTextColor="@color/white" />
     <com.google.android.material.textfield.TextInputLayout

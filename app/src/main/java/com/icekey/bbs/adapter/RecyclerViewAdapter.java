@@ -2,6 +2,7 @@ package com.icekey.bbs.adapter;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
@@ -11,12 +12,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.icekey.bbs.R;
 import com.icekey.bbs.bean.RecyclerData;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Context context;
@@ -35,21 +39,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = null;
+        View itemView;
         if (viewType == PIC_NONE) {
-            itemView = View.inflate(context, R.layout.item_none_pic, null);
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_none_pic, parent, false);
             return new NonePicViewHolder(itemView);
         } else if (viewType == PIC_ONE) {
-            itemView = View.inflate(context, R.layout.item_one_pic, null);
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_one_pic, parent, false);
             return new OnePicViewHolder(itemView);
         } else if (viewType == PIC_TWO) {
-            itemView = View.inflate(context, R.layout.item_two_pic, null);
-            return null;
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_two_pic, parent, false);
+            return new TwoPicViewHolder(itemView);
         } else if (viewType == PIC_THREE) {
-            itemView = View.inflate(context, R.layout.item_three_pic, null);
-            return null;
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_three_pic, parent, false);
+            return new ThreePicViewHolder(itemView);
         } else {
-            itemView = View.inflate(context, R.layout.item_recycler, null);
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler, parent, false);
             return new ViewHolder(itemView);
         }
     }
@@ -58,18 +62,71 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-//        RecyclerData recyclerData = datas.get(position);
-//        Glide.with(context).load(recyclerData.getIco_url()).into(holder.userIcon);
-//        holder.userName.setText(recyclerData.getUserName());
-//        DateFormat df3 = DateFormat.getDateTimeInstance();
-//        holder.postDate.setText(df3.format(new Date()));
-//        holder.title.setText(recyclerData.getTitle());
-//        holder.content.setText(recyclerData.getContent());
-//        String[] arrays = new Gson().fromJson(datas.get(position).getImg_json(), String[].class);
-//        holder.gridView.setNumColumns(arrays.length);
-//        holder.gridView.setAdapter(new GridViewAdapter(context, recyclerData.getImg_json(), holder.gridView));
-        if (holder instanceof NonePicViewHolder){
-
+//
+        if (holder instanceof NonePicViewHolder) {
+            NonePicViewHolder viewHolder = (NonePicViewHolder) holder;
+            RecyclerData recyclerData = datas.get(position);
+            Glide.with(context).load(recyclerData.getIco_url()).into(viewHolder.userIcon);
+            viewHolder.userName.setText(recyclerData.getUserName());
+            viewHolder.postDate.setText(recyclerData.getDate());
+            viewHolder.title.setText(recyclerData.getTitle());
+            viewHolder.content.setText(recyclerData.getContent());
+            viewHolder.text_read.setText(recyclerData.getText_read());
+            viewHolder.text_commit.setText(recyclerData.getText_commit());
+            viewHolder.text_favorite.setText(recyclerData.getText_favorite());
+        } else if (holder instanceof OnePicViewHolder) {
+            OnePicViewHolder viewHolder = (OnePicViewHolder) holder;
+            RecyclerData recyclerData = datas.get(position);
+            Glide.with(context).load(recyclerData.getIco_url()).into(viewHolder.userIcon);
+            viewHolder.userName.setText(recyclerData.getUserName());
+            viewHolder.postDate.setText(recyclerData.getDate());
+            viewHolder.title.setText(recyclerData.getTitle());
+            viewHolder.content.setText(recyclerData.getContent());
+            String[] url_pic = new Gson().fromJson(recyclerData.getImg_json(), String[].class);
+            Glide.with(context).load(url_pic[0]).into(viewHolder.imageView);
+            viewHolder.text_read.setText(recyclerData.getText_read());
+            viewHolder.text_commit.setText(recyclerData.getText_commit());
+            viewHolder.text_favorite.setText(recyclerData.getText_favorite());
+        } else if (holder instanceof TwoPicViewHolder) {
+            TwoPicViewHolder viewHolder = (TwoPicViewHolder) holder;
+            RecyclerData recyclerData = datas.get(position);
+            Glide.with(context).load(recyclerData.getIco_url()).into(viewHolder.userIcon);
+            viewHolder.userName.setText(recyclerData.getUserName());
+            viewHolder.postDate.setText(recyclerData.getDate());
+            viewHolder.title.setText(recyclerData.getTitle());
+            viewHolder.content.setText(recyclerData.getContent());
+            String[] url_pic = new Gson().fromJson(recyclerData.getImg_json(), String[].class);
+            Glide.with(context).load(url_pic[0]).into(viewHolder.imageView1);
+            Glide.with(context).load(url_pic[1]).into(viewHolder.imageView2);
+            viewHolder.text_read.setText(recyclerData.getText_read());
+            viewHolder.text_commit.setText(recyclerData.getText_commit());
+            viewHolder.text_favorite.setText(recyclerData.getText_favorite());
+        } else if (holder instanceof ThreePicViewHolder) {
+            ThreePicViewHolder viewHolder = (ThreePicViewHolder) holder;
+            RecyclerData recyclerData = datas.get(position);
+            Glide.with(context).load(recyclerData.getIco_url()).into(viewHolder.userIcon);
+            viewHolder.userName.setText(recyclerData.getUserName());
+            viewHolder.postDate.setText(recyclerData.getDate());
+            viewHolder.title.setText(recyclerData.getTitle());
+            viewHolder.content.setText(recyclerData.getContent());
+            String[] url_pic = new Gson().fromJson(recyclerData.getImg_json(), String[].class);
+            Glide.with(context).load(url_pic[0]).into(viewHolder.imageView1);
+            Glide.with(context).load(url_pic[1]).into(viewHolder.imageView2);
+            Glide.with(context).load(url_pic[2]).into(viewHolder.imageView3);
+            viewHolder.text_read.setText(recyclerData.getText_read());
+            viewHolder.text_commit.setText(recyclerData.getText_commit());
+            viewHolder.text_favorite.setText(recyclerData.getText_favorite());
+        } else if (holder instanceof ViewHolder) {
+            ViewHolder viewHolder = (ViewHolder) holder;
+            RecyclerData recyclerData = datas.get(position);
+            Glide.with(context).load(recyclerData.getIco_url()).into(viewHolder.userIcon);
+            viewHolder.userName.setText(recyclerData.getUserName());
+            viewHolder.postDate.setText(recyclerData.getDate());
+            viewHolder.title.setText(recyclerData.getTitle());
+            viewHolder.content.setText(recyclerData.getContent());
+            String[] arrays = new Gson().fromJson(datas.get(position).getImg_json(), String[].class);
+            viewHolder.gridView.setNumColumns(arrays.length);
+            viewHolder.gridView.setAdapter(new GridViewAdapter(context, recyclerData.getImg_json(), viewHolder.gridView));
         }
     }
 
@@ -145,6 +202,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             text_favorite = itemView.findViewById(R.id.item_none_text_favorite);
         }
     }
+
     static class OnePicViewHolder extends RecyclerView.ViewHolder {
         private ImageView userIcon;
         private TextView userName;
@@ -167,6 +225,62 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             text_read = itemView.findViewById(R.id.item_one_text_read);
             text_commit = itemView.findViewById(R.id.item_one_text_commit);
             text_favorite = itemView.findViewById(R.id.item_one_text_favorite);
+        }
+    }
+
+    static class TwoPicViewHolder extends RecyclerView.ViewHolder {
+        private ImageView userIcon;
+        private TextView userName;
+        private TextView postDate;
+        private TextView title;
+        private TextView content;
+        private ImageView imageView1;
+        private ImageView imageView2;
+        private TextView text_read;
+        private TextView text_commit;
+        private TextView text_favorite;
+
+        public TwoPicViewHolder(@NonNull View itemView) {
+            super(itemView);
+            userIcon = itemView.findViewById(R.id.item_two_userIcon);
+            userName = itemView.findViewById(R.id.item_two_userName);
+            postDate = itemView.findViewById(R.id.item_two_postDate);
+            title = itemView.findViewById(R.id.item_two_title);
+            content = itemView.findViewById(R.id.item_two_content);
+            imageView1 = itemView.findViewById(R.id.item_two_pic1);
+            imageView2 = itemView.findViewById(R.id.item_two_pic2);
+            text_read = itemView.findViewById(R.id.item_two_text_read);
+            text_commit = itemView.findViewById(R.id.item_two_text_commit);
+            text_favorite = itemView.findViewById(R.id.item_two_text_favorite);
+        }
+    }
+
+    static class ThreePicViewHolder extends RecyclerView.ViewHolder {
+        private ImageView userIcon;
+        private TextView userName;
+        private TextView postDate;
+        private TextView title;
+        private TextView content;
+        private ImageView imageView1;
+        private ImageView imageView2;
+        private ImageView imageView3;
+        private TextView text_read;
+        private TextView text_commit;
+        private TextView text_favorite;
+
+        public ThreePicViewHolder(@NonNull View itemView) {
+            super(itemView);
+            userIcon = itemView.findViewById(R.id.item_three_userIcon);
+            userName = itemView.findViewById(R.id.item_three_userName);
+            postDate = itemView.findViewById(R.id.item_three_postDate);
+            title = itemView.findViewById(R.id.item_three_title);
+            content = itemView.findViewById(R.id.item_three_content);
+            imageView1 = itemView.findViewById(R.id.item_three_pic1);
+            imageView2 = itemView.findViewById(R.id.item_three_pic2);
+            imageView3 = itemView.findViewById(R.id.item_three_pic3);
+            text_read = itemView.findViewById(R.id.item_three_text_read);
+            text_commit = itemView.findViewById(R.id.item_three_text_commit);
+            text_favorite = itemView.findViewById(R.id.item_three_text_favorite);
         }
     }
 

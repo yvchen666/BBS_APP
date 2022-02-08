@@ -23,7 +23,6 @@
             app:layout_constraintTop_toTopOf="parent"
             toolbar:navigationIcon="@drawable/ic_book_list"
             toolbar:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            toolbar:theme="@style/ToolbarTheme"
             toolbar:title=""
             toolbar:titleTextColor="@color/black" />
 

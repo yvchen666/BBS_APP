@@ -11,6 +11,43 @@ public class RecyclerData {
     String title;
     String content;
     String img_json;
+    String text_read;
+    String text_commit;
+    String text_favorite;
+
+    public static RecyclerData getRecyclerData() {
+        return recyclerData;
+    }
+
+    public static void setRecyclerData(RecyclerData recyclerData) {
+        RecyclerData.recyclerData = recyclerData;
+    }
+
+    public String getText_read() {
+        return text_read;
+    }
+
+    public void setText_read(String text_read) {
+        this.text_read = text_read;
+    }
+
+    public String getText_commit() {
+        return text_commit;
+    }
+
+    public void setText_commit(String text_commit) {
+        this.text_commit = text_commit;
+    }
+
+    public String getText_favorite() {
+        return text_favorite;
+    }
+
+    public void setText_favorite(String text_favorite) {
+        this.text_favorite = text_favorite;
+    }
+
+
     public String getIco_url() {
         return ico_url;
     }
@@ -69,6 +106,10 @@ public class RecyclerData {
         String title = "NULL";
         String content = "test";
         String img_json = "['http://139.155.90.20/bbs/00.png','http://139.155.90.20/bbs/00.png','http://139.155.90.20/bbs/00.png']";
+        String text_read = "0";
+        String text_commit = "0";
+        String text_favorite = "0";
+
 
         public Builder() {
         }
@@ -81,8 +122,12 @@ public class RecyclerData {
             recyclerData.title = title;
             recyclerData.content = content;
             recyclerData.img_json = img_json;
+            recyclerData.text_read = text_read;
+            recyclerData.text_commit = text_commit;
+            recyclerData.text_favorite = text_favorite;
             return recyclerData;
         }
+
         public Builder setIco_url(String ico_url) {
             this.ico_url = ico_url;
             return this;
@@ -113,6 +158,20 @@ public class RecyclerData {
             return this;
         }
 
+        public Builder setText_read(String text_read) {
+            this.text_read = text_read;
+            return this;
+        }
+
+        public Builder setText_commit(String text_commit) {
+            this.text_commit = text_commit;
+            return this;
+        }
+
+        public Builder setText_favorite(String text_favorite) {
+            this.text_favorite = text_favorite;
+            return this;
+        }
     }
 
 }

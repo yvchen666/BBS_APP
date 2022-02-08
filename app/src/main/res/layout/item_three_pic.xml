@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/item_recycler_card"
+    android:id="@+id/item_three_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -28,7 +28,7 @@
                 android:layout_marginEnd="16dp">
 
                 <ImageView
-                    android:id="@+id/item_recycler_userIcon"
+                    android:id="@+id/item_three_userIcon"
                     android:layout_width="35dp"
                     android:layout_height="35dp" />
 
@@ -38,7 +38,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/item_recycler_userName"
+                        android:id="@+id/item_three_userName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
@@ -46,7 +46,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/item_recycler_postDate"
+                        android:id="@+id/item_three_postDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
@@ -63,7 +63,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/item_recycler_Title"
+                    android:id="@+id/item_three_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -74,7 +74,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/item_recycler_content"
+                    android:id="@+id/item_three_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lines="3"
@@ -87,15 +87,18 @@
                     android:layout_height="150dp">
 
                     <ImageView
+                        android:id="@+id/item_three_pic1"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent" />
                     <ImageView
+                        android:id="@+id/item_three_pic2"
                         android:layout_marginStart="5dp"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent" />
                     <ImageView
+                        android:id="@+id/item_three_pic3"
                         android:layout_marginStart="5dp"
                         android:layout_weight="1"
                         android:layout_width="0dp"
@@ -122,10 +125,11 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_share" />
+                    android:src="@drawable/ic_read" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/item_three_text_read"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
 
@@ -142,7 +146,8 @@
                     android:src="@drawable/ic_message" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/item_three_text_commit"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
 
@@ -159,7 +164,8 @@
                     android:src="@drawable/ic_zan" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/item_three_text_favorite"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
         </LinearLayout>

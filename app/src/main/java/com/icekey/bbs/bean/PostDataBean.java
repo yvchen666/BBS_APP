@@ -1,33 +1,32 @@
 package com.icekey.bbs.bean;
 
-import com.google.gson.annotations.SerializedName;
+
 
 public class PostDataBean {
 
-    @SerializedName("id")
-    private Integer id;
-    @SerializedName("postUser")
+    private long id;
     private String postUser;
-    @SerializedName("postHeader")
+    private String userIco;
     private String postHeader;
-    @SerializedName("postContent")
     private String postContent;
-    @SerializedName("postPic")
     private String postPic;
-    @SerializedName("postVideo")
     private String postVideo;
-    @SerializedName("postTime")
     private String postTime;
-    @SerializedName("postPlate")
     private String postPlate;
+    private int postHint;
+    private String postRead;
+    private String postCommit;
+    private String postFavorite;
 
-    public Integer getId() {
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
+
 
     public String getPostUser() {
         return postUser;
@@ -37,6 +36,16 @@ public class PostDataBean {
         this.postUser = postUser;
     }
 
+
+    public String getUserIco() {
+        return userIco;
+    }
+
+    public void setUserIco(String userIco) {
+        this.userIco = userIco;
+    }
+
+
     public String getPostHeader() {
         return postHeader;
     }
@@ -44,6 +53,7 @@ public class PostDataBean {
     public void setPostHeader(String postHeader) {
         this.postHeader = postHeader;
     }
+
 
     public String getPostContent() {
         return postContent;
@@ -53,6 +63,7 @@ public class PostDataBean {
         this.postContent = postContent;
     }
 
+
     public String getPostPic() {
         return postPic;
     }
@@ -60,6 +71,7 @@ public class PostDataBean {
     public void setPostPic(String postPic) {
         this.postPic = postPic;
     }
+
 
     public String getPostVideo() {
         return postVideo;
@@ -69,6 +81,7 @@ public class PostDataBean {
         this.postVideo = postVideo;
     }
 
+
     public String getPostTime() {
         return postTime;
     }
@@ -77,6 +90,7 @@ public class PostDataBean {
         this.postTime = postTime;
     }
 
+
     public String getPostPlate() {
         return postPlate;
     }
@@ -84,4 +98,41 @@ public class PostDataBean {
     public void setPostPlate(String postPlate) {
         this.postPlate = postPlate;
     }
+
+
+    public int getPostHint() {
+        return postHint;
+    }
+
+    public void setPostHint(int postHint) {
+        this.postHint = postHint;
+    }
+
+
+    public String getPostRead() {
+        return postRead;
+    }
+
+    public void setPostRead(String postRead) {
+        this.postRead = postRead;
+    }
+
+
+    public String getPostCommit() {
+        return postCommit;
+    }
+
+    public void setPostCommit(String postCommit) {
+        this.postCommit = postCommit;
+    }
+
+
+    public String getPostFavorite() {
+        return postFavorite;
+    }
+
+    public void setPostFavorite(String postFavorite) {
+        this.postFavorite = postFavorite;
+    }
+
 }

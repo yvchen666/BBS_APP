@@ -27,8 +27,12 @@ import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.util.LogUtils;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import es.dmoral.toasty.Toasty;
@@ -74,16 +78,20 @@ public class FrameHome extends Fragment {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    String json =  response.body().string();
-                    List<PostDataBean> postDataBeanList = new Gson().fromJson(json,new TypeToken<List<PostDataBean>>(){}.getType());
+                    String json = response.body().string();
+                    List<PostDataBean> postDataBeanList = new Gson().fromJson(json, new TypeToken<List<PostDataBean>>() {
+                    }.getType());
                     RecyclerData.Builder builder = new RecyclerData.Builder();
-                    for (PostDataBean postDataBean :postDataBeanList) {
+                    for (PostDataBean postDataBean : postDataBeanList) {
                         RecyclerData module = builder
                                 .setUserName(postDataBean.getPostUser())
                                 .setTitle(postDataBean.getPostHeader())
                                 .setContent(postDataBean.getPostContent())
                                 .setImg_json(postDataBean.getPostPic())
                                 .setDate(postDataBean.getPostTime())
+                                .setText_read(postDataBean.getPostRead())
+                                .setText_commit(postDataBean.getPostCommit())
+                                .setText_favorite(postDataBean.getPostFavorite())
                                 .crate();
                         datas.add(module);
                     }
@@ -91,19 +99,15 @@ public class FrameHome extends Fragment {
                     e.printStackTrace();
                 }
             }
+
             @SuppressLint("CheckResult")
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toasty.warning(requireActivity(), Objects.requireNonNull(t.getMessage()));
             }
         });
-//        datas = new ArrayList<>();
-//        RecyclerData.Builder builder = new RecyclerData.Builder();
-//        for (int i = 0; i < 20; i++) {
-//            RecyclerData module = builder.setUserName("用户" + i).setTitle("标题" + i).setContent("test").crate();
-//            datas.add(module);
-//        }
     }
+
 
     private void initBanner() {
         ImageAdapter adapter = new ImageAdapter(DataBean.getTestData2());
