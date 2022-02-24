@@ -1,6 +1,7 @@
 package com.icekey.bbs.ui.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -22,17 +24,14 @@ import com.icekey.bbs.bean.DataBean;
 import com.icekey.bbs.bean.PostDataBean;
 import com.icekey.bbs.bean.RecyclerData;
 import com.icekey.bbs.network.UserApi;
+import com.icekey.bbs.ui.EditPostActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.util.LogUtils;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 import es.dmoral.toasty.Toasty;
@@ -47,6 +46,7 @@ public class FrameHome extends Fragment {
     private RecyclerView recyclerView;
     private ArrayList<RecyclerData> datas = new ArrayList<>();
     private RecyclerViewAdapter recyclerViewAdapter;
+    private FloatingActionButton floatingActionButton;
 
     @Nullable
     @Override
@@ -68,6 +68,12 @@ public class FrameHome extends Fragment {
         recyclerView.addItemDecoration(spacesItemDecoration);
         //设置LayoutManager
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        floatingActionButton.setOnClickListener((v) -> {
+            Intent intent = new Intent();
+            intent.setClass(getContext(),EditPostActivity.class);
+            startActivity(intent);
+        });
 
     }
 
@@ -124,5 +130,6 @@ public class FrameHome extends Fragment {
     private void initView() {
         banner = getActivity().findViewById(R.id.frame_home_banner);
         recyclerView = getActivity().findViewById(R.id.fame_home_recyclerView);
+        floatingActionButton = getActivity().findViewById(R.id.fab);
     }
 }

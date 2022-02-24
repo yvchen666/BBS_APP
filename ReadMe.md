@@ -11,12 +11,11 @@
     recyclerview加载不同样式
     我的界面
 ### Todo
+    recyclerView上滑banner消失
     帖子详情
     发帖界面
     后期再加 话题界面
-    对接服务器
     注册界面
-    多样式item的recyclerView
 
 
 ### 经验：
@@ -24,7 +23,7 @@
     大图片放入mipmap 加载起来内存优化比draw able好很多
 
     RecyclerView，item中的xml布局是match_parent，但是宽度没能铺满整个界面解决办法：
-        ```java
+        ``` java
             @NonNull
             @Override
             public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

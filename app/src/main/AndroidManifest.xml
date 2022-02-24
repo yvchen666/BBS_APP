@@ -21,7 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.LoginActivity"/>
+        <activity android:name=".ui.LoginActivity" />
+        <!--        让系统在弹起键盘时自动调整界面-->
+        <activity
+            android:name=".ui.EditPostActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 
 </manifest>

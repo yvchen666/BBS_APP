@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_/AppProject/xaau/RichEdit/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Android_/AppProject/xaau/RichEdit/src/main/res/layout/activity_web_view.xml" value="0.22135416666666666" />
+        <entry key="..\:/Android_/AppProject/xaau/RichEdit/src/main/res/layout/include_head_view.xml" value="0.22135416666666666" />
+        <entry key="..\:/Android_/AppProject/xaau/RichEdit/src/main/res/layout/view_font_color_select.xml" value="0.22135416666666666" />
+        <entry key="..\:/Android_/AppProject/xaau/RichEdit/src/main/res/layout/view_font_size_select.xml" value="0.22135416666666666" />
+        <entry key="..\:/Android_/AppProject/xaau/RichEdit/src/main/res/layout/view_font_style_panel.xml" value="0.22135416666666666" />
+        <entry key="..\:/Android_/AppProject/xaau/RichEdit/src/main/res/layout/view_font_style_select.xml" value="0.22135416666666666" />
+        <entry key="..\:/Android_/AppProject/xaau/RichInpute/src/main/res/layout/activity_main.xml" value="0.22135416666666666" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/drawable/button_round_shap.xml" value="0.2037037037037037" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/drawable/card_foreground.xml" value="0.2375" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/drawable/cardview_shap_bg.xml" value="0.2375" />
@@ -15,6 +23,7 @@
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/drawable/ic_visibility_black_24dp.xml" value="0.12314814814814815" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/activity_login.xml" value="0.20652173913043478" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/add_post.xml" value="0.39792387543252594" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/bage_hint.xml" value="0.22135416666666666" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/frame_home.xml" value="0.264" />
         <entry key="..\:/Android_/AppProject/xaau/app/src/main/res/layout/frame_main.xml" value="0.22135416666666666" />
