@@ -1,11 +1,7 @@
 package com.icekey.bbs.ui;
 
-import static android.content.ContentValues.TAG;
-
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -21,15 +17,11 @@ import com.google.gson.Gson;
 import com.icekey.bbs.R;
 import com.icekey.bbs.bean.LoginResponseBean;
 import com.icekey.bbs.network.UserApi;
-import com.icekey.bbs.utils.SharedPreferencesUtil;
-import com.icekey.bbs.utils.StaticFinalString;
+import com.icekey.bbs.ui.richtext.utils.SharedPreferencesUtil;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;

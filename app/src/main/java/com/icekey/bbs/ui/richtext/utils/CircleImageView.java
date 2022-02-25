@@ -1,4 +1,4 @@
-package com.icekey.bbs.utils;
+package com.icekey.bbs.ui.richtext.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

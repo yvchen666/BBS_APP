@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.icekey.bbs">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
 
         android:supportsRtl="true"
-        android:theme="@style/Theme.BBS">
+        android:theme="@style/Theme.BBS"
+        tools:targetApi="n">
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
@@ -24,7 +32,7 @@
         <activity android:name=".ui.LoginActivity" />
         <!--        让系统在弹起键盘时自动调整界面-->
         <activity
-            android:name=".ui.EditPostActivity"
+            android:name=".ui.richtext.EditPostActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 

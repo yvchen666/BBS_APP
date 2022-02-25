@@ -24,7 +24,7 @@ import com.icekey.bbs.bean.DataBean;
 import com.icekey.bbs.bean.PostDataBean;
 import com.icekey.bbs.bean.RecyclerData;
 import com.icekey.bbs.network.UserApi;
-import com.icekey.bbs.ui.EditPostActivity;
+import com.icekey.bbs.ui.richtext.EditPostActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.util.LogUtils;

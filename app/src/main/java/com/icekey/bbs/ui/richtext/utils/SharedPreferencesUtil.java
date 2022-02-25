@@ -1,4 +1,4 @@
-package com.icekey.bbs.utils;
+package com.icekey.bbs.ui.richtext.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

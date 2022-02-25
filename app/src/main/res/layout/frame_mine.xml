@@ -27,7 +27,7 @@
                 android:layout_margin="10dp"
                 android:orientation="horizontal">
 
-                <com.icekey.bbs.utils.CircleImageView
+                <com.icekey.bbs.ui.richtext.utils.CircleImageView
                     android:src="@mipmap/ic_launcher"
                     android:id="@+id/frame_mine_userIcon"
                     android:layout_width="60dp"

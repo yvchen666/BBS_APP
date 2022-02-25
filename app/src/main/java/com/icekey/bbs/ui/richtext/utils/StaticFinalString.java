@@ -1,8 +1,6 @@
-package com.icekey.bbs.utils;
+package com.icekey.bbs.ui.richtext.utils;
 
 import android.content.Context;
-
-import com.icekey.bbs.ui.LoginActivity;
 
 public class StaticFinalString {
 
