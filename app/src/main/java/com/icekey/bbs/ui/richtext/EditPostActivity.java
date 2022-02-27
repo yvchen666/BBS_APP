@@ -1,12 +1,18 @@
 package com.icekey.bbs.ui.richtext;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -18,11 +24,18 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.icekey.bbs.R;
+import com.icekey.bbs.adapter.BottomSheetRecyclerAdapter;
+import com.icekey.bbs.bean.RecyclerUserData;
 import com.ns.yc.yccustomtextlib.edit.inter.ImageLoader;
 import com.ns.yc.yccustomtextlib.edit.inter.OnHyperEditListener;
 import com.ns.yc.yccustomtextlib.edit.manager.HyperManager;
@@ -35,6 +48,7 @@ import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
@@ -48,13 +62,15 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class EditPostActivity extends AppCompatActivity {
+    private List<RecyclerUserData> list;
+    private BottomSheetDialog bottomSheetDialog;
+    private BottomSheetBehavior mDialogBehavior;
     private Disposable subsInsert;
     private Disposable mDisposable;
     private static final int REQUEST_CODE_CHOOSE = 520;
     private int screenWidth;
     private int screenHeight;
     private ImageView image_back;
-    private TextView text_modeChange;
     private TextView text_postAdd;
     private EditText post_title;
     private ImageView image_bold;
@@ -78,7 +94,6 @@ public class EditPostActivity extends AppCompatActivity {
 
     private void initView() {
         image_back = findViewById(R.id.back);
-        text_modeChange = findViewById(R.id.change_mode);
         text_postAdd = findViewById(R.id.post);
         post_title = findViewById(R.id.post_title);
         hte_content = findViewById(R.id.richTextEditor);
@@ -107,6 +122,19 @@ public class EditPostActivity extends AppCompatActivity {
         });
         image_underLine.setOnClickListener((v) -> hte_content.underline());
         image_italic.setOnClickListener((v) -> hte_content.italic());
+        image_back.setOnClickListener((v) -> finish());
+
+        RecyclerUserData recyclerUserData = new RecyclerUserData("http://139.155.90.20/bbs/ico.png", "User", false);
+        list = new ArrayList<>();
+        list.add(recyclerUserData);
+        list.add(recyclerUserData);
+        list.add(recyclerUserData);
+        list.add(recyclerUserData);
+        list.add(recyclerUserData);
+
+        image_aite.setOnClickListener((v) -> bottomSheet());
+
+
         hte_content.setOnHyperListener(new OnHyperEditListener() {
             @Override
             public void onImageClick(View view, String imagePath) {
@@ -147,6 +175,60 @@ public class EditPostActivity extends AppCompatActivity {
                         .show();
             }
         });
+    }
+
+    private void bottomSheet() {
+        if (bottomSheetDialog == null) {
+            //创建布局
+            View view = LayoutInflater.from(this).inflate(R.layout.dialog_bottomsheet, null, false);
+            RecyclerView recyclerView = view.findViewById(R.id.bottomSheetRecycler);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            BottomSheetRecyclerAdapter mainAdapter = new BottomSheetRecyclerAdapter(list);
+            recyclerView.setAdapter(mainAdapter);
+            bottomSheetDialog = new BottomSheetDialog(this, R.style.BottomSheetDialog);
+            //设置点击dialog外部不消失
+            bottomSheetDialog.setCanceledOnTouchOutside(true);
+            //核心代码 解决了无法去除遮罩问题
+            bottomSheetDialog.getWindow().setDimAmount(0f);
+            //设置布局
+            bottomSheetDialog.setContentView(view);
+            //用户行为
+
+            mDialogBehavior = BottomSheetBehavior.from(view.getRootView());
+            //dialog的高度
+            mDialogBehavior.setPeekHeight(getWindowHeight());
+        }
+        //展示
+        bottomSheetDialog.show();
+        //重新用户的滑动状态
+        mDialogBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View view, int newState) {
+                //监听BottomSheet状态的改变
+                if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+                    bottomSheetDialog.dismiss();
+                    mDialogBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View view, float v) {
+                //监听拖拽中的回调，根据slideOffset可以做一些动画
+            }
+        });
+
+    }
+
+    private int getWindowHeight() {
+        Display defaultDisplay = getWindowManager().getDefaultDisplay();
+        Point point = new Point();
+        defaultDisplay.getSize(point);
+        int heightPixels = point.y;
+
+        int reHeight = heightPixels - heightPixels / 4;
+        Log.d("Height", reHeight + "");
+        //设置弹窗高度为屏幕高度的3/4
+        return reHeight;
     }
 
     private void callGallery() {
